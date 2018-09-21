@@ -35,7 +35,7 @@ public class Matrix{
 		System.out.println("Fill in the matrix row by row");
 		Scanner scan = new Scanner(System.in);
 		for(int i = 0; i< row;i++){
-			System.out.println("Please input numbers in row "+(i+1)+":");
+			System.out.println("Please input "+column+" numbers in row "+(i+1)+":");
 			for(int j = 0; j< column; j++){
 				main[i][j] = scan.nextInt();
 				scan.nextLine();
