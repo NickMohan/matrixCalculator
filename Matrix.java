@@ -56,6 +56,26 @@ public class Matrix{
 		return finalMatrix;
 	}
 
+	public Matrix reduceMatrix(){
+		Matrix finalMatrix = new Matrix(row, column);
+
+	}
+
+	public void swapRow(int firstRow, int secondRow){
+		Matrix finalMatrix = new Matrix(row, column);
+		int temp;
+
+		for(int i = 0; i < column; i++){ 
+			temp = main[firstRow][i];
+			main[firstRow][i] = main[secondRow][i];
+			main[secondRow][i] = temp;
+		}
+	}
+
+	public void rowAddition(int replacedRow, int secondRow){
+		
+	}
+
 	public int getRows(){
 		return row;
 	}
