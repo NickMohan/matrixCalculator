@@ -32,6 +32,7 @@ public class Matrix{
 	}
 
 	public void fillMatrix(){
+		System.out.println("Fill in the matrix row by row");
 		Scanner scan = new Scanner(System.in);
 		for(int i = 0; i< row;i++){
 			System.out.println("Please input numbers in row "+(i+1)+":");
@@ -42,14 +43,33 @@ public class Matrix{
 		}
 	}
 
-	//public int[] returnCol(int i){
-		//Do this
-	//}
+	public Matrix multiplyMatrix(Matrix x){
+		Matrix finalMatrix = new Matrix(row,1);
+		int temp = -1;
+		for(int i = 0; i<row; i++){
+			temp = 0;
+			for(int j = 0; j<column; j++){
+				temp = temp + (main[i][j] * x.get(j,0));
+			}
+			finalMatrix.set(i,0,temp);
+		}
+		return finalMatrix;
+	}
 
-	//public int[] returnRow(int i){
-		//do this
-	//}
+	public int getRows(){
+		return row;
+	}
 
+	public int getColumns(){
+		return column;
+	}
 
+	public int get(int n, int m){
+		return main[n][m];
+	}
+
+	public void set(int n, int m, int value){
+		main[n][m] = value;
+	}
 
 }

@@ -10,8 +10,17 @@ public class MatrixCalc{
 		
 		temp = welcomeAndInput();
 		Matrix main = new Matrix(temp[0],temp[1]);
+		Matrix second = new Matrix(main.getColumns(),1);
+
 		main.fillMatrix();
+		second.fillMatrix();
+
+
 		main.printMatrix();
+		second.printMatrix(); 
+
+		main.multiplyMatrix(second).printMatrix();
+
 
 
 
@@ -28,5 +37,4 @@ public class MatrixCalc{
 		return mBYn;
 	}
 
-	//public 
 }
