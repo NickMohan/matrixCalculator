@@ -15,9 +15,14 @@ public class MatrixCalc{
 		main.fillMatrix();
 		second.fillMatrix();
 
+		main.printMatrix();
+		second.printMatrix();
+
+
+		main.reduceMatrix();
 
 		main.printMatrix();
-		second.printMatrix(); 
+
 
 		main.multiplyMatrix(second).printMatrix();
 

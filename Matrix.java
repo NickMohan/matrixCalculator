@@ -12,7 +12,7 @@ public class Matrix{
 	}
 
 	public Matrix(int m, int n){
-		//When matrix is initialized make everything in it all zeros
+		//make sure cant have 0 rows or 0 columns
 		row = m;
 		column = n;
 		main = new int[row][column];
@@ -56,13 +56,25 @@ public class Matrix{
 		return finalMatrix;
 	}
 
-	public Matrix reduceMatrix(){
-		Matrix finalMatrix = new Matrix(row, column);
+	//Make sure this can handle one row matrix
+	public void reduceMatrix(){
+		//Sort rows leading coefficent from bottom to top
+		for(int i = 0; i< row-1;i++){
+			int max = i;
+			for(int j = i+1;j< row;j++){
+				if(main[max][0]>main[j][0]){
+					max = j;
+				}
+			}
+			swapRow(i,max);
+		}
+		//Goes from top to bottom reducing 
+
+
 
 	}
 
 	public void swapRow(int firstRow, int secondRow){
-		Matrix finalMatrix = new Matrix(row, column);
 		int temp;
 
 		for(int i = 0; i < column; i++){ 
@@ -71,9 +83,13 @@ public class Matrix{
 			main[secondRow][i] = temp;
 		}
 	}
-
+	//need this for next step of the reduction method
 	public void rowAddition(int replacedRow, int secondRow){
-		
+		int temp, multiplier;
+
+		for(int i = 0; i<column;i++){
+						
+		}
 	}
 
 	public int getRows(){
@@ -90,6 +106,7 @@ public class Matrix{
 
 	public void set(int n, int m, int value){
 		main[n][m] = value;
+		return;
 	}
 
 }
