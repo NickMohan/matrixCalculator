@@ -4,7 +4,7 @@ public class Matrix{
 
 	private int row;
 	private int column;
-	private int[][] main;
+	private double[][] main;
 
 	public Matrix(){
 		row = 0;
@@ -15,7 +15,7 @@ public class Matrix{
 		//make sure cant have 0 rows or 0 columns
 		row = m;
 		column = n;
-		main = new int[row][column];
+		main = new double[row][column];
 	}
 
 	public void printMatrix(){
@@ -37,7 +37,7 @@ public class Matrix{
 		for(int i = 0; i< row;i++){
 			System.out.println("Please input "+column+" numbers in row "+(i+1)+":");
 			for(int j = 0; j< column; j++){
-				main[i][j] = scan.nextInt();
+				main[i][j] = scan.nextDouble();
 				scan.nextLine();
 			}
 		}
@@ -45,9 +45,9 @@ public class Matrix{
 
 	public Matrix multiplyMatrix(Matrix x){
 		Matrix finalMatrix = new Matrix(row,1);
-		int temp = -1;
+		double temp = -1.0;
 		for(int i = 0; i<row; i++){
-			temp = 0;
+			temp = 0.0;
 			for(int j = 0; j<column; j++){
 				temp = temp + (main[i][j] * x.get(j,0));
 			}
@@ -75,7 +75,7 @@ public class Matrix{
 	}
 
 	public void swapRow(int firstRow, int secondRow){
-		int temp;
+		double temp;
 
 		for(int i = 0; i < column; i++){ 
 			temp = main[firstRow][i];
@@ -84,11 +84,12 @@ public class Matrix{
 		}
 	}
 	//need this for next step of the reduction method
-	public void rowAddition(int replacedRow, int secondRow){
-		int temp, multiplier;
-
+	public void rowAddition(int rowWithBiggerNumber, int rowWithSmallerNumber){
+		int temp;
+		double multiplier;
+		multiplier = main[rowWithBiggerNumber][0] / main[rowWithSmallerNumber][0];
 		for(int i = 0; i<column;i++){
-						
+			main[rowWithBiggerNumber][i] = main[rowWithBiggerNumber][i] - (multiplier * main[rowWithSmallerNumber][i]);
 		}
 	}
 
@@ -100,11 +101,11 @@ public class Matrix{
 		return column;
 	}
 
-	public int get(int n, int m){
+	public double get(int n, int m){
 		return main[n][m];
 	}
 
-	public void set(int n, int m, int value){
+	public void set(int n, int m, double value){
 		main[n][m] = value;
 		return;
 	}
