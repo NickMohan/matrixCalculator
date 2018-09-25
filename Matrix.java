@@ -88,9 +88,14 @@ public class Matrix{
 		int temp;
 		double multiplier;
 		multiplier = main[rowWithBiggerNumber][0] / main[rowWithSmallerNumber][0];
+		System.out.println("Multiplier: "+ multiplier);
 		for(int i = 0; i<column;i++){
 			main[rowWithBiggerNumber][i] = main[rowWithBiggerNumber][i] - (multiplier * main[rowWithSmallerNumber][i]);
 		}
+	}
+	//This should make all leading coefficents one and divide the ratio by the rest of it
+	public void rowRatio() {
+		return;
 	}
 
 	public int getRows(){

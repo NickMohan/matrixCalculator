@@ -18,7 +18,7 @@ public class MatrixCalc{
 		main.printMatrix();
 		second.printMatrix();
 
-		main.reduceMatrix();
+		//main.reduceMatrix();
 		main.rowAddition(1,0);
 
 		main.printMatrix();
