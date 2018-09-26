@@ -57,6 +57,7 @@ public class Matrix{
 	}
 
 	//Make sure this can handle one row matrix
+	//And also no row matrix
 	public void reduceMatrix(){
 		//Sort rows leading coefficent from bottom to top
 		for(int i = 0; i< row-1;i++){
@@ -73,7 +74,7 @@ public class Matrix{
 
 
 	}
-
+	//Make sure cant input larger row number
 	public void swapRow(int firstRow, int secondRow){
 		double temp;
 
@@ -83,19 +84,30 @@ public class Matrix{
 			main[secondRow][i] = temp;
 		}
 	}
-	//need this for next step of the reduction method
+	//TODO make sure cant input larger number then ther are rows
 	public void rowAddition(int rowWithBiggerNumber, int rowWithSmallerNumber){
-		int temp;
+		int z = 0;
+		while(main[rowWithSmallerNumber][z] == 0){
+			z++;
+		}
 		double multiplier;
-		multiplier = main[rowWithBiggerNumber][0] / main[rowWithSmallerNumber][0];
+		multiplier = main[rowWithBiggerNumber][z] / main[rowWithSmallerNumber][z];
 		System.out.println("Multiplier: "+ multiplier);
 		for(int i = 0; i<column;i++){
 			main[rowWithBiggerNumber][i] = main[rowWithBiggerNumber][i] - (multiplier * main[rowWithSmallerNumber][i]);
 		}
 	}
 	//This should make all leading coefficents one and divide the ratio by the rest of it
-	public void rowRatio() {
-		return;
+	//Make sure cant input larger row number then you have
+	public void rowRatio(int row) {
+		int z = 0;
+		while(main[row][z] == 0){
+			z++;
+		}
+		double ratio = main[row][z];
+		for(int i = 0; i < column; i++){
+			main[row][i] = main[row][i] / ratio;
+		}
 	}
 
 	public int getRows(){

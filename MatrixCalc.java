@@ -13,13 +13,15 @@ public class MatrixCalc{
 		Matrix second = new Matrix(main.getColumns(),1);
 
 		main.fillMatrix();
-		second.fillMatrix();
+		//second.fillMatrix();
 
 		main.printMatrix();
-		second.printMatrix();
+		//second.printMatrix();
 
 		//main.reduceMatrix();
-		main.rowAddition(1,0);
+		//main.rowAddition(1,0);
+
+		main.rowRatio(0);
 
 		main.printMatrix();
 
