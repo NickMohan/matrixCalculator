@@ -18,23 +18,24 @@ public class MatrixCalc{
 		main.printMatrix();
 		//second.printMatrix();
 
-<<<<<<< HEAD
+		main.reduceMatrix();
+		main.printMatrix();
 		//main.reduceMatrix();
 		//main.rowAddition(1,0);
 
-		main.rowRatio(0);
-=======
-		second.reduceMatrix();
-		second.printMatrix();
+		//main.rowRatio(0);
 
-		main.reduceMatrix();
-		main.rowAddition(1,0);
->>>>>>> 7bb7d11092079f5a57d51df724dce10f0c994c9f
+		//second.reduceMatrix();
+		//second.printMatrix();
 
-		main.printMatrix();
+		//main.reduceMatrix();
+		//main.rowAddition(1,0);
 
 
-		main.multiplyMatrix(second).printMatrix();
+		//main.printMatrix();
+
+
+		//main.multiplyMatrix(second).printMatrix();
 
 
 

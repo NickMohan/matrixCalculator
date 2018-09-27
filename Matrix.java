@@ -69,7 +69,23 @@ public class Matrix{
 			}
 			swapRow(i,max);
 		}
-		//Goes from top to bottom reducing 
+
+		printMatrix();
+		//Goes from top to bottom and left to right reducing
+		//https://www.cs.rutgers.edu/~venugopa/parallel_summer2012/ge.html
+		//http://mathworld.wolfram.com/GaussianElimination.html
+
+		for(int i = 0; i<row; i++){
+			rowRatio(i);
+			printMatrix();
+			for(int j = i; j<column; j++){
+				for(int z = i+1; z<row;z++){
+					rowAddition(z,i);
+				}
+				//Stuff should probably happen here
+
+			}
+		}
 
 
 
@@ -92,7 +108,6 @@ public class Matrix{
 		}
 		double multiplier;
 		multiplier = main[rowWithBiggerNumber][z] / main[rowWithSmallerNumber][z];
-		System.out.println("Multiplier: "+ multiplier);
 		for(int i = 0; i<column;i++){
 			main[rowWithBiggerNumber][i] = main[rowWithBiggerNumber][i] - (multiplier * main[rowWithSmallerNumber][i]);
 		}
