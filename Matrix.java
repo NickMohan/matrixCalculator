@@ -84,7 +84,7 @@ public class Matrix{
 		}
 		//Should now do rref down here and 
 		//make sure all rows are in the right way with leading ones cascading down
-
+		reShapeRows();
 
 
 	}
@@ -125,12 +125,23 @@ public class Matrix{
 	//This needs to work more like selection sort
 	//Find the row with least zeros and compare with next top
 	//switch if need to
+
+	//while(main[i][temp1] == 0){temp1++;}
+	//while(main[i+1][temp2] == 0){temp2++;}
+	//if(temp1 > temp2){swapRow(i,i+1);}
+
 	public void reShapeRows(){
-		int temp1 = 0, temp2 = 0;
 		for(int i = 0; i<row-1; i++){
-		 	while(main[i][temp1] == 0){temp1++;}
-		 	while(main[i+1][temp2] == 0){temp2++;}
-		 	if(temp1 > temp2){swapRow(i,i+1);}
+			int temp1 = 0, temp2 = 0, rowSave;
+			while(main[i][temp1] == 0){temp1++;}
+			rowSave = i;
+			for(int j = i+1;j<row; j++){
+				while(main[j][temp2] == 0){temp2++;}
+				if(temp1 > temp2){
+					rowSave = j;
+				}
+			}
+			swapRow(i, rowSave);
 		}
 	}
 
