@@ -69,23 +69,21 @@ public class Matrix{
 			}
 			swapRow(i,max);
 		}
-
+		System.out.println("After Sorting:");
 		printMatrix();
 		//Goes from top to bottom and left to right reducing
 		//https://www.cs.rutgers.edu/~venugopa/parallel_summer2012/ge.html
 		//http://mathworld.wolfram.com/GaussianElimination.html
-
 		for(int i = 0; i<row; i++){
 			rowRatio(i);
+			System.out.println("After resizing row: "+i);
 			printMatrix();
-			for(int j = i; j<column; j++){
-				for(int z = i+1; z<row;z++){
-					rowAddition(z,i);
-				}
-				//Stuff should probably happen here
-
+			for(int j = i+1; j<row; j++){
+				rowAddition(j,i);
 			}
 		}
+		//Should now do rref down here and 
+		//make sure all rows are in the right way with leading ones cascading down
 
 
 
@@ -122,6 +120,17 @@ public class Matrix{
 		double ratio = main[row][z];
 		for(int i = 0; i < column; i++){
 			main[row][i] = main[row][i] / ratio;
+		}
+	}
+	//This needs to work more like selection sort
+	//Find the row with least zeros and compare with next top
+	//switch if need to
+	public void reShapeRows(){
+		int temp1 = 0, temp2 = 0;
+		for(int i = 0; i<row-1; i++){
+		 	while(main[i][temp1] == 0){temp1++;}
+		 	while(main[i+1][temp2] == 0){temp2++;}
+		 	if(temp1 > temp2){swapRow(i,i+1);}
 		}
 	}
 
