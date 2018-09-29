@@ -27,6 +27,7 @@ public class MatrixCalc{
 
 
 	}
+	//Welcome and input for the program
 	public static ArrayList<Integer> welcomeAndInput(){
 		ArrayList<Integer> mBYn = new ArrayList<Integer>();
 		System.out.println("Welcome to Matrix Calculator");

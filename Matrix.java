@@ -6,14 +6,15 @@ public class Matrix{
 	private int column;
 	private double[][] main;
 
+	//Default constructor
 	public Matrix(){
 		row = 0;
 		column = 0;
 	}
-
+	//Constructor that checks for illegal 
 	public Matrix(int m, int n) throws IllegalArgumentException {
 		try{
-			if(m == 0 || n == 0){
+			if(m <= 0 || n <= 0){
 				throw new IllegalArgumentException("Input of Matrix Size cannot be 0");
 			}
 		}
@@ -25,7 +26,7 @@ public class Matrix{
 		column = n;
 		main = new double[row][column];
 	}
-
+	//Print Matrix Function
 	public void printMatrix(){
 		System.out.println("");
 		for(int i = 0; i<row;i++){
@@ -42,7 +43,7 @@ public class Matrix{
 			System.out.println("|");
 		}
 	}
-
+	//Fill Matrix goes through the matrix filling each spot of the matrix with a double 
 	public void fillMatrix(){
 		System.out.println("Fill in the matrix row by row\n(After Every Number Entered Hit Enter)");
 		Scanner scan = new Scanner(System.in);
@@ -54,7 +55,7 @@ public class Matrix{
 			}
 		}
 	}
-
+	//Takes two matrixes and multiplies them together returning the final matrix
 	public Matrix multiplyMatrix(Matrix x){
 		Matrix finalMatrix = new Matrix(row,1);
 		double temp = -1.0;
@@ -67,9 +68,8 @@ public class Matrix{
 		}
 		return finalMatrix;
 	}
-
-	//Make sure this can handle one row matrix
-	//And also no row matrix
+	//This reduces a matrix to reduced row echeleon form
+	//This implements the gaussian-jordan reduction method
 	public void reduceMatrix(){
 		//Sort rows leading coefficent from bottom to top
 		for(int i = 0; i< row-1;i++){
@@ -88,8 +88,7 @@ public class Matrix{
 				rowAddition(j,i);
 			}
 		}
-		//Should now do rref down here and 
-		//make sure all rows are in the right way with leading ones cascading down
+		//Does the final reductions 
 		reShapeRows();
 		for(int i = row-1; i>0; i--){
 			for(int j = i-1; j>=0; j--){
@@ -98,7 +97,7 @@ public class Matrix{
 			rowRatio(i);
 		}
 	}
-	//Make sure cant input larger row number
+	//Swaps two rows of the matrix
 	public void swapRow(int firstRow, int secondRow){
 		double temp;
 
@@ -108,7 +107,7 @@ public class Matrix{
 			main[secondRow][i] = temp;
 		}
 	}
-	//TODO make sure cant input larger number then ther are rows
+	//Adds two rows together with to replace one of them and the other has a multiplier
 	public void rowAddition(int rowWithBiggerNumber, int rowWithSmallerNumber){
 		int z = 0;
 		while(main[rowWithSmallerNumber][z] == 0){
@@ -120,8 +119,7 @@ public class Matrix{
 			main[rowWithBiggerNumber][i] = main[rowWithBiggerNumber][i] - (multiplier * main[rowWithSmallerNumber][i]);
 		}
 	}
-	//This should make all leading coefficents one and divide the ratio by the rest of it
-	//Make sure cant input larger row number then you have
+	//This makes a row have a leading coefficent of one and resizes the rest of the row
 	public void rowRatio(int row) {
 		int z = 0;
 		while(main[row][z] == 0){
@@ -132,9 +130,7 @@ public class Matrix{
 			main[row][i] = main[row][i] / ratio;
 		}
 	}
-	//This needs to work more like selection sort
-	//Find the row with least zeros and compare with next top
-	//switch if need to
+	//This takes the final rows and put them in cascading order down
 	public void reShapeRows(){
 		for(int i = 0; i<row-1; i++){
 			int temp1 = 0, temp2 = 0, rowSave;
@@ -149,7 +145,7 @@ public class Matrix{
 			swapRow(i, rowSave);
 		}
 	}
-
+	//Below are all the getters and setters for this class
 	public int getRows(){
 		return row;
 	}
