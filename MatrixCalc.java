@@ -7,9 +7,11 @@ import java.util.Scanner;
 public class MatrixCalc{
 	public static void main(String[] args){
 		int [] temp;
-		
+
 		temp = welcomeAndInput();
+			
 		Matrix main = new Matrix(temp[0],temp[1]);
+
 		Matrix second = new Matrix(main.getColumns(),1);
 
 		main.fillMatrix();
@@ -19,25 +21,8 @@ public class MatrixCalc{
 		//second.printMatrix();
 
 		main.reduceMatrix();
+		
 		main.printMatrix();
-		//main.reduceMatrix();
-		//main.rowAddition(1,0);
-
-		//main.rowRatio(0);
-
-		//second.reduceMatrix();
-		//second.printMatrix();
-
-		//main.reduceMatrix();
-		//main.rowAddition(1,0);
-
-
-		//main.printMatrix();
-
-
-		//main.multiplyMatrix(second).printMatrix();
-
-
 
 
 	}

@@ -11,8 +11,16 @@ public class Matrix{
 		column = 0;
 	}
 
-	public Matrix(int m, int n){
-		//make sure cant have 0 rows or 0 columns
+	public Matrix(int m, int n) throws IllegalArgumentException {
+		try{
+			if(m == 0 || n == 0){
+				throw new IllegalArgumentException("Input of Matrix Size cannot be 0");
+			}
+		}
+		catch(IllegalArgumentException x){
+			System.out.println("Input of Matrix Size cannot be 0");
+			System.exit(0);
+		}
 		row = m;
 		column = n;
 		main = new double[row][column];
@@ -23,16 +31,20 @@ public class Matrix{
 		for(int i = 0; i<row;i++){
 			System.out.print("|");
 			for(int j = 0; j<column;j++){
-				System.out.print(main[i][j]);
+				if(main[i][j] == -0.0){
+					System.out.print("0.00");
+				}
+				else{
+					System.out.printf("%.2f", main[i][j]);
+				}
 				if(j != column-1){System.out.print(", ");}
-				
 			}
 			System.out.println("|");
 		}
 	}
 
 	public void fillMatrix(){
-		System.out.println("Fill in the matrix row by row");
+		System.out.println("Fill in the matrix row by row\n(After Every Number Entered Hit Enter)");
 		Scanner scan = new Scanner(System.in);
 		for(int i = 0; i< row;i++){
 			System.out.println("Please input "+column+" numbers in row "+(i+1)+":");
@@ -69,15 +81,9 @@ public class Matrix{
 			}
 			swapRow(i,max);
 		}
-		System.out.println("After Sorting:");
-		printMatrix();
 		//Goes from top to bottom and left to right reducing
-		//https://www.cs.rutgers.edu/~venugopa/parallel_summer2012/ge.html
-		//http://mathworld.wolfram.com/GaussianElimination.html
 		for(int i = 0; i<row; i++){
 			rowRatio(i);
-			System.out.println("After resizing row: "+i);
-			printMatrix();
 			for(int j = i+1; j<row; j++){
 				rowAddition(j,i);
 			}
@@ -85,8 +91,12 @@ public class Matrix{
 		//Should now do rref down here and 
 		//make sure all rows are in the right way with leading ones cascading down
 		reShapeRows();
-
-
+		for(int i = row-1; i>0; i--){
+			for(int j = i-1; j>=0; j--){
+				rowAddition(j,i);
+			}
+			rowRatio(i);
+		}
 	}
 	//Make sure cant input larger row number
 	public void swapRow(int firstRow, int secondRow){
@@ -125,11 +135,6 @@ public class Matrix{
 	//This needs to work more like selection sort
 	//Find the row with least zeros and compare with next top
 	//switch if need to
-
-	//while(main[i][temp1] == 0){temp1++;}
-	//while(main[i+1][temp2] == 0){temp2++;}
-	//if(temp1 > temp2){swapRow(i,i+1);}
-
 	public void reShapeRows(){
 		for(int i = 0; i<row-1; i++){
 			int temp1 = 0, temp2 = 0, rowSave;
