@@ -3,14 +3,15 @@
 //CSE 389 Web Systems Arch
 
 import java.util.Scanner;
+import java.util.ArrayList;
 
 public class MatrixCalc{
 	public static void main(String[] args){
-		int [] temp;
+		ArrayList<Integer> temp = new ArrayList<Integer>();
 
 		temp = welcomeAndInput();
 			
-		Matrix main = new Matrix(temp[0],temp[1]);
+		Matrix main = new Matrix(temp.get(0),temp.get(1));
 
 		Matrix second = new Matrix(main.getColumns(),1);
 
@@ -26,15 +27,15 @@ public class MatrixCalc{
 
 
 	}
-	public static int[] welcomeAndInput(){
-		int [] mBYn = new int[2];
+	public static ArrayList<Integer> welcomeAndInput(){
+		ArrayList<Integer> mBYn = new ArrayList<Integer>();
 		System.out.println("Welcome to Matrix Calculator");
 		Scanner scan = new Scanner(System.in);
 		System.out.println("Please input number of rows:");
-		mBYn[0] = scan.nextInt();
+		mBYn.add(scan.nextInt());
 		scan.nextLine();
 		System.out.println("Please input number of columns:");
-		mBYn[1] = scan.nextInt();
+		mBYn.add(scan.nextInt());
 		return mBYn;
 	}
 
